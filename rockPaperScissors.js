@@ -27,6 +27,7 @@
     let humanScore = 0;
     let computerScore = 0;
 
+    // Single round of game
     function playRound(humanChoice, computerChoice) {
         let humanShort = humanChoice.toLowerCase().trim();
         if (humanShort != "rock" 
@@ -49,6 +50,7 @@
         }
     }
 
+    // fetching human and computer choices
     function getPlayersChoices() {
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
@@ -57,6 +59,7 @@
         ${playRound(humanSelection, computerSelection)}`; 
     }
 
+    // Number of rounds
     alert(getPlayersChoices());
     alert(getPlayersChoices());
     alert(getPlayersChoices());
@@ -68,6 +71,7 @@
     const gameWinMessage = `With a score of ${humanScore}, you win !`;
     const gameErrorMessage = `Hmmm... the computer has a score of ${computerScore}, and your score is ${humanScore} but to me honest I don't know what happened...`;
     
+    // Calculating winner
     function declareWinner(player1, player2) {
         if (player1 == player2) {
             return gameDrawMessage;
@@ -86,4 +90,5 @@
     return declareWinner(humanScore, computerScore);
 }
 
+// Starting the game
 alert(playGame());
