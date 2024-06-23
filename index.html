@@ -5,8 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <title>Rock Paper Scissors !</title>
+    <script src="scripts.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="rockPaperScissors.js"></script> 
+    <div id="computerScoreTab" class="tab">
+        <div class="fakeNav">
+            <div class="fakeBtn">
+                <button class="min">-</button>
+                <button class="max">o</button>
+                <button class="close">x</button>
+            </div>
+        </div>
+        <div class="score">
+            <h2>Computer Score</h2>
+            <h1 id="computerScore"></h1>
+        </div>
+    </div>
+
+    <div id="playerScoreTab" class="tab">
+        <div class="fakeNav">
+            <div class="fakeBtn">
+                <button class="min">-</button>
+                <button class="max">o</button>
+                <button class="close">x</button>
+            </div>
+        </div>
+        <div class="score">
+            <h2>Player Score</h2>
+            <h1 id="playerScore"></h1>
+        </div>
+    </div>
+
+    <div id="mainWindow" class="tab">
+        <div class="fakeNav">
+            <div class="fakeBtn">
+                <button class="min">-</button>
+                <button class="max">o</button>
+                <button class="close">x</button>
+            </div>
+        </div>
+        <div class="mainContent">
+            <div id="roundNum">Round <span id="currentRound"></span></div>
+            <div id="hands">
+                <div id="computerHand">computer</div>
+                <div id="playerHand">player</div>
+            </div>
+            <div id ="playerChoice">
+                <button id="rock" class="humanInput">Rock</button>
+                <button id="paper" class="humanInput">Paper</button>
+                <button id="scissors" class="humanInput">Scissors</button>
+            </div>
+        </div>
+    </div>    
 </body>
+
+<footer>
+    <p>made by <a href="https://github.com/cahdmus/">cahdmus</a></p>
+</footer>
 </html>

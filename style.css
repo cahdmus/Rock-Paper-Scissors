@@ -1,0 +1,133 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    /* border: 1px dotted black; */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 13vh;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: -2vh;
+}
+
+h2 {
+    font-size: medium;
+    margin-top: 0.8vh;
+}
+
+#mainWindow {
+    margin: 10%;
+    width: 100%;
+    height: 70vh;
+    border: 1px solid rgb(189, 117, 117);
+}
+
+.fakeNav {
+    background-color: aquamarine;
+    height: 4vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 3px;
+}
+
+.fakeNav button {
+    height: 3vh;
+    width: 3vh;
+}
+
+.mainContent {
+    display: flex;
+    font-size: 30px;
+    position: relative;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+#playerChoice {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    top: 2vh; right: 2vh;
+}
+
+#playerChoice button {
+    height: 80px;
+    width: 80px;
+    margin: 1.5vh;
+}
+
+#roundNum {
+    text-align: center;
+    padding-top: 2vh;
+    font-size: 6vh;
+}
+
+#hands {
+    display: flex;
+    justify-content: space-between;
+    height: inherit;
+}
+
+#playerHand, #computerHand {
+    width: 100%;
+    text-align: center;
+}
+
+
+
+
+
+
+#computerScoreTab, #playerScoreTab {
+    height: 20vh;
+    width: 30vh;
+    position: absolute;
+}
+
+#computerScoreTab {
+    top: 10vh; left: 10vh;
+}
+
+#playerScoreTab {
+    bottom: 10vh; right: 10vh;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tab {
+    border: 1px solid rgb(189, 117, 117);
+    background-color: white;
+    box-shadow: 6px 6px green;
+}
+
+footer {
+    position: absolute;
+    bottom: 3vh; right: 3vh;
+    font-size: 1.5vh;
+}
+
+footer a {
+    text-decoration: none;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    color: green;
+}
+

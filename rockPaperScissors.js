@@ -1,4 +1,4 @@
- function playGame() {
+function playGame(getHumanChoice) {
     // Computer Output
     function getComputerChoice() {
         let computerResult = Math.floor(Math.random() * 3);
@@ -15,9 +15,9 @@
     }
         
     // Human input
-    function getHumanChoice () {
-        return prompt("THIS IS THE ROCK PAPER SCISSORS TOURNAMENT !\nWhat are you going to play ?", "Rock, paper or scissors ?");
-    }
+    // function getHumanChoice () {
+    //     return prompt("THIS IS THE ROCK PAPER SCISSORS TOURNAMENT !\nWhat are you going to play ?", "Rock, paper or scissors ?");
+    // }
 
     const winMessage = "Oh my god, you win this round !";
     const loseMessage = "Boohoo you loose this round...";
@@ -49,10 +49,9 @@
             return loseMessage;
         }
     }
-
     // fetching human and computer choices
     function getPlayersChoices() {
-        const humanSelection = getHumanChoice();
+        const humanSelection = getHumanChoice;
         const computerSelection = getComputerChoice();
         
         return `Computer played ${computerSelection}, and human played ${humanSelection}. What a thrilling game !!\nTherefore the results are in : 
@@ -60,11 +59,14 @@
     }
 
     // Number of rounds
-    alert(getPlayersChoices());
-    alert(getPlayersChoices());
-    alert(getPlayersChoices());
-    alert(getPlayersChoices());
-    alert(getPlayersChoices());
+    for (i = 0, i <= 5, i++) {
+        alert(getPlayersChoices());
+    }
+    // alert(getPlayersChoices());
+    // alert(getPlayersChoices());
+    // alert(getPlayersChoices());
+    // alert(getPlayersChoices());
+
 
     const gameDrawMessage = `Well, whatever you did the computer has a score of ${computerScore}, and your score is ${humanScore} so it's a draw !`;
     const gameLoseMessage = `With a score of ${computerScore}, computer wins !`;
@@ -91,4 +93,11 @@
 }
 
 // Starting the game
-alert(playGame());
+// return which button player pressed
+const plays = document.querySelectorAll("button");
+plays.forEach((button) => {
+  button.addEventListener("click", () => {
+    alert(playGame(button.id));
+  });
+});
+
