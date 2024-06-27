@@ -41,8 +41,9 @@ function declareWinner(humanFinalScore, ComputerFinalScore) {
 function checkIfWinner(human, computer, round) {
     if (human >= round || computer >= round) {
         alertWinner(human, computer);
+        return true;
     } else {
-        alertRound();
+        return false;
     }
 }
 
@@ -52,16 +53,18 @@ function playRound(humanChoice, computerChoice) {
         && humanShort != "paper"
         && humanShort != "scissors") {
         console.log(`Computer : ${computerScore} (${computerChoice}) and Human : ${humanScore} (${humanChoice})`)
-        checkIfWinner(humanScore, computerScore, winToWin);
-        alertRound(humanShort, computerChoice, "error");
+        if(!checkIfWinner(humanScore, computerScore, winToWin)) {
+            alertRound(humanShort, computerChoice, "error");
+        }
         return errorMessage;
     }
     else if (humanShort == computerChoice) {
         currentRound++;
         document.querySelector("#currentRound").textContent = currentRound;
         console.log(`Computer : ${computerScore} (${computerChoice}) and Human : ${humanScore} (${humanChoice})`)
-        checkIfWinner(humanScore, computerScore, winToWin);
-        alertRound(humanShort, computerChoice, "tie");
+        if(!checkIfWinner(humanScore, computerScore, winToWin)) {
+            alertRound(humanShort, computerChoice, "tie");
+        }
         return drawMessage;
     }
     else if (humanShort == "rock" && computerChoice == "scissors"
@@ -72,8 +75,9 @@ function playRound(humanChoice, computerChoice) {
         currentRound++;
         document.querySelector("#currentRound").textContent = currentRound;
         console.log(`Computer : ${computerScore} (${computerChoice}) and Human : ${humanScore} (${humanChoice})`)
-        checkIfWinner(humanScore, computerScore, winToWin);
-        alertRound(humanShort, computerChoice, "winner");
+        if(!checkIfWinner(humanScore, computerScore, winToWin)) {
+            alertRound(humanShort, computerChoice, "winner");
+        }
         return winMessage;
     }
     else {
@@ -82,12 +86,12 @@ function playRound(humanChoice, computerChoice) {
         currentRound++;
         document.querySelector("#currentRound").textContent = currentRound;
         console.log(`Computer : ${computerScore} (${computerChoice}) and Human : ${humanScore} (${humanChoice})`)
-        checkIfWinner(humanScore, computerScore, winToWin);
-        alertRound(humanShort, computerChoice, "loser");
+        if(!checkIfWinner(humanScore, computerScore, winToWin)) {
+            alertRound(humanShort, computerChoice, "loser");
+        };
         return loseMessage;
     }
 }
-
 
 // Human Input
 const humanInputs = document.querySelectorAll(".humanInput");
@@ -116,91 +120,99 @@ humanInputs.forEach(humanInput => {
     });
 });
 
-// pop-up message at the end of rounds
-const mainWindow = document.querySelector("#mainWindow");
-const message = document.createElement("div");
-const fakeNav = document.createElement("div");
-const fakeBtn = document.createElement("div");
-const closeBtn = document.createElement("button");
-const content = document.createElement("div");
-const title = document.createElement("h1");
-const description = document.createElement("div");
-const computerChoiceImg = document.createElement("img");
-const humanChoiceImg = document.createElement("img");
-const text = document.createElement("p");
-
 function popUp() {
-    message.classList.add("tab");
-    fakeNav.classList.add("fakeNav");
-    fakeBtn.classList.add("fakeBtn");
-    closeBtn.classList.add("close");
-    closeBtn.textContent = "x";
-    fakeBtn.appendChild(closeBtn)
-    fakeNav.appendChild(fakeBtn)
-    message.appendChild(fakeNav)
-    message.appendChild(content);
-    content.appendChild(title);
-    description.classList.add("popUp");
-    content.appendChild(description);
-    description.appendChild(computerChoiceImg);
-    description.appendChild(text);
-    description.appendChild(humanChoiceImg);
-    mainWindow.appendChild(message);
+
+    const popUpWindow = {
+        mainWindow : document.querySelector("#mainWindow"),
+        message : document.createElement("div"),
+        fakeNav : document.createElement("div"),
+        fakeBtn : document.createElement("div"),
+        closeBtn : document.createElement("button"),
+        content : document.createElement("div"),
+        title : document.createElement("h1"),
+        description : document.createElement("div"),
+        computerChoiceImg : document.createElement("img"),
+        humanChoiceImg : document.createElement("img"),
+        text : document.createElement("p")
+    };
+    
+    popUpWindow.message.classList.add("tab");
+    popUpWindow.fakeNav.classList.add("fakeNav");
+    popUpWindow.fakeBtn.classList.add("fakeBtn");
+    popUpWindow.closeBtn.classList.add("close");
+    popUpWindow.closeBtn.textContent = "x";
+    popUpWindow.fakeBtn.appendChild(popUpWindow.closeBtn);
+    popUpWindow.fakeNav.appendChild(popUpWindow.fakeBtn);
+    popUpWindow.message.appendChild(popUpWindow.fakeNav);
+    popUpWindow.message.appendChild(popUpWindow.content);
+    popUpWindow.content.appendChild(popUpWindow.title);
+    popUpWindow.description.classList.add("popUp");
+    popUpWindow.content.appendChild(popUpWindow.description);
+    popUpWindow.description.appendChild(popUpWindow.computerChoiceImg);
+    popUpWindow.description.appendChild(popUpWindow.text);
+    popUpWindow.description.appendChild(popUpWindow.humanChoiceImg);
+    popUpWindow.mainWindow.appendChild(popUpWindow.message);
+
+    return popUpWindow;
 }
 
+let popUpCollection = [];
+
 function alertRound(humanChoice, computerChoice, result) {
-    popUp();
-    message.classList.add("roundMessage");
-    title.textContent = `Computer played ${computerChoice} against your ${humanChoice}`;
+    let alertBox = popUp();
+    popUpCollection.push(alertBox);
+    console.log(popUpCollection);
+    alertBox.message.classList.add("roundMessage");
+    alertBox.title.textContent = `Computer played ${computerChoice} against your ${humanChoice}`;
 
     switch (result) {
         case "winner" : 
-            text.textContent = winMessage;
+            alertBox.text.textContent = winMessage;
             break;
         case "loser" :
-            text.textContent = loseMessage;
+            alertBox.text.textContent = loseMessage;
             break;
         case "tie" :
-            text.textContent = drawMessage;
+            alertBox.text.textContent = drawMessage;
             break;
         default :
-            text.textContent = errorMessage;
+            alertBox.text.textContent = errorMessage;
     }
 
     switch (computerChoice) {
         case "rock" : 
-            computerChoiceImg.src = "images/rock.png";
+            alertBox.computerChoiceImg.src = "images/rock.png";
             computerImg.src = "images/Computer_Hand/Computer_Rock.gif";
             break;
         case "paper" :
-            computerChoiceImg.src = "images/paper.png";
+            alertBox.computerChoiceImg.src = "images/paper.png";
             computerImg.src = "images/Computer_Hand/Computer_Paper.gif";
             break;
         case "scissors" :
-            computerChoiceImg.src = "images/scissors.png";
+            alertBox.computerChoiceImg.src = "images/scissors.png";
             computerImg.src = "images/Computer_Hand/Computer_Scissors.gif";
             break;
         default :
-            computerChoiceImg.src = "images/error.png";
+            alertBox.computerChoiceImg.src = "images/error.png";
             computerImg.src = "images/Computer_Hand/Computer_Idle.gif";
     }
 
     switch (humanChoice) {
         case "rock" : 
-            humanChoiceImg.src = "images/rock.png";
+            alertBox.humanChoiceImg.src = "images/rock.png";
             break;
         case "paper" :
-            humanChoiceImg.src = "images/paper.png";
+            alertBox.humanChoiceImg.src = "images/paper.png";
             break;
         case "scissors" :
-            humanChoiceImg.src = "images/scissors.png";
+            alertBox.humanChoiceImg.src = "images/scissors.png";
             break;
         default :
-            humanChoiceImg.src = "images/error.png";
+            alertBox.humanChoiceImg.src = "images/error.png";
     }
     
-    closeBtn.addEventListener("click", () => {
-        message.remove();
+    alertBox.closeBtn.addEventListener("click", () => {
+        alertBox.message.remove();
         humanImg.src = "images/Human_Hand/Human_Idle.gif"
         computerImg.src = "images/Computer_Hand/Computer_Idle.gif";
     });
@@ -212,25 +224,28 @@ function alertWinner(humanFinalScore, ComputerFinalScore) {
     const gameErrorMessage = `Hmmm... the computer has a score of ${ComputerFinalScore}, and your score 
         is ${humanFinalScore} but to me honest I don't know what happened...`;
     
-    popUp();
-    message.classList.add("winMessage");
+    let winBox = popUp();
+    winBox.message.classList.add("winMessage");
+    popUpCollection.forEach(popUpBox => {
+        popUpBox.message.remove();
+    });
 
     if (humanFinalScore < ComputerFinalScore) {
-        title.textContent = `At least you had fun ?`;
-        text.textContent = gameLoseMessage;
+        winBox.title.textContent = `At least you had fun ?`;
+        winBox.text.textContent = gameLoseMessage;
         console.log(gameLoseMessage);
     } else if (humanFinalScore > ComputerFinalScore) {
-        title.textContent = `Wasn't it great ?.`;
-        text.textContent = gameWinMessage;
+        winBox.title.textContent = `Wasn't it great ?.`;
+        winBox.text.textContent = gameWinMessage;
         console.log(gameWinMessage);
     } else {
-        title.textContent = `Well...`;
-        text.textContent = gameErrorMessage;
+        winBox.title.textContent = `Well...`;
+        winBox.text.textContent = gameErrorMessage;
         console.log(gameErrorMessage);
     }
 
-    closeBtn.addEventListener("click", () => {
-        message.remove();
+    winBox.closeBtn.addEventListener("click", () => {
+        winBox.message.remove();
         humanScore = 0;
         document.querySelector("#playerScore").textContent = humanScore;
         computerScore = 0;
@@ -239,4 +254,3 @@ function alertWinner(humanFinalScore, ComputerFinalScore) {
         document.querySelector("#currentRound").textContent = currentRound;
     });
 }
-
