@@ -4,7 +4,7 @@ let computerScore = 0;
 document.querySelector("#computerScore").textContent = computerScore;
 let currentRound = 1;
 document.querySelector("#currentRound").textContent = currentRound;
-let winToWin = 2;
+let winToWin = 5;
 
 const winMessage = "You win this round !";
 const loseMessage = "Boohoo you lose...";
@@ -126,6 +126,7 @@ function popUp() {
         mainWindow : document.querySelector("#mainWindow"),
         message : document.createElement("div"),
         fakeNav : document.createElement("div"),
+        fakeTitle : document.createElement("p"),
         fakeBtn : document.createElement("div"),
         closeBtn : document.createElement("button"),
         content : document.createElement("div"),
@@ -138,10 +139,13 @@ function popUp() {
     
     popUpWindow.message.classList.add("tab");
     popUpWindow.fakeNav.classList.add("fakeNav");
+    popUpWindow.fakeTitle.classList.add("fakeTitle");
+    popUpWindow.fakeTitle.textContent = "Scores";
     popUpWindow.fakeBtn.classList.add("fakeBtn");
     popUpWindow.closeBtn.classList.add("close");
     popUpWindow.closeBtn.textContent = "x";
     popUpWindow.fakeBtn.appendChild(popUpWindow.closeBtn);
+    popUpWindow.fakeNav.appendChild(popUpWindow.fakeTitle);
     popUpWindow.fakeNav.appendChild(popUpWindow.fakeBtn);
     popUpWindow.message.appendChild(popUpWindow.fakeNav);
     popUpWindow.message.appendChild(popUpWindow.content);
@@ -235,7 +239,7 @@ function alertWinner(humanFinalScore, ComputerFinalScore) {
         winBox.text.textContent = gameLoseMessage;
         console.log(gameLoseMessage);
     } else if (humanFinalScore > ComputerFinalScore) {
-        winBox.title.textContent = `Wasn't it great ?.`;
+        winBox.title.textContent = `Wasn't it great ?`;
         winBox.text.textContent = gameWinMessage;
         console.log(gameWinMessage);
     } else {

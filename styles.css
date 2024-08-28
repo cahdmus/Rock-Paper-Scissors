@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Tiny5&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Tiny5", sans-serif;
+    color: #677448;
+    /* border: 1px dotted red; */
+}
+
+body {
+    background-image: url(images/background.png);
+    background-size: cover;
+    background-color: #CBDBB6;
+}
+
+/* TAB STYLE */
+.tab {
+    background-color: #eeecd8;
+    margin: 15px;
+    border: #CBDBB6 2px outset;
+    box-shadow: #6774482f 3px 3px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.fakeNav {
+    height: 20px;
+    background-color: #bdaf19;
+    display: flex;
+    justify-content: space-between;
+}
+
+.fakeNav p {
+    padding: 3px;
+    margin-left: 5px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+
+.fakeBtn button {
+    border: none;
+    background-color: #bdaf19;
+    border-left: #A8A025 solid 2px;
+    height: 100%;
+    width: 20px;
+}
+
+/* MAIN - a.k.a. INPUT ZONE */
+main {
+    height: 95vh;
+    display: flex;
+    align-items: center;
+}
+
+#mainWindow {
+    width: 650px;
+    height: 400px;
+    margin: auto;
+}
+
+.mainContent {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+#roundNum {
+    width: 100%;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 40px;
+    color: #DC552F;
+    text-transform: uppercase;
+    text-decoration: underline wavy 2px #bdaf19;
+}
+
+#currentRound {
+    color: #bdaf19;
+}
+
+#hands {
+    display: flex;
+    justify-content: space-between;
+}
+
+#hands img {
+    width: 50%;
+}
+
+#playerChoice {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    top: 2vh; right: 2vh;
+}
+
+.humanInput {
+    overflow: hidden;
+    width: 65px;
+    height: 65px;
+    margin-bottom: 10px;
+    border-radius: 100%;
+    border: 5px solid #CBDBB6;
+}
+
+.humanInput:hover {
+    border: 5px solid #DC552F;
+}
+
+/* SCORE TABS */
+#playerScoreTab,
+#computerScoreTab {
+    position: absolute;
+    z-index: 1;
+}
+
+#playerScoreTab {
+    width: 190px;
+    height: 130px;
+    /* modifier en dessous en fonction taille monitor */
+    bottom: 10vh; right: 25vh;
+}
+
+#computerScoreTab {
+    width: 200px;
+    height: 120px;
+    /* modifier en dessous en fonction taille monitor */
+    top: 10vh; left: 25vh;
+}
+
+.score {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+.score h1 {
+    color: #DC552F;
+}
+
+/* FOOTER */
+footer {
+    background-color: #EEECD8;
+    width: 100vw;
+    position: absolute;
+    bottom: 0vh; right: 0vh;
+    display: flex;
+    justify-content: space-between;
+    border-top: #CBDBB6 2px outset;
+}
+
+footer img {
+    height: 12px;
+    width: 12px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+footer .footerTabs {
+    display: flex;
+    justify-content: flex-start;
+}
+
+footer p {
+    width: fit-content;
+    margin: 2px;
+    padding: 2px;
+    font-size: 12px;
+    text-transform: uppercase;
+    border: #CBDBB6 2px outset;
+}
+
+footer a {
+    color: #bdaf19;
+}
+
+footer #selected,
+footer #credit {
+    border-style: inset;
+}
+
+/* POP-UPS */
+.hidden {
+    visibility: hidden;
+    display: none;
+}
+
+.roundMessage {
+    width: 300px;
+    height: auto;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.roundMessage img {
+    border-radius: 100%;
+    width: 65px;
+    border: 5px solid #CBDBB6;
+    margin: 2vh 2vh 2vh 2.5vh;
+}
+
+.roundMessage h1 {
+    font-size: 20px;
+    margin: 15px 15px 0 15px;
+    color: #DC552F;
+}
+
+.popUp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popUp p {
+    text-transform: uppercase;
+    font-size: 15px;
+    color: #bdaf19;
+}
+
+.winMessage {
+    width: 400px;
+    height: 190px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+
+.winMessage h1 {
+    margin-top: 50px;
+}

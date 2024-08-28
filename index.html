@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/images/Icons-5.png">
     <title>Rock Paper Scissors !</title>
     <script src="scripts.js" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<main>
     <div id="computerScoreTab" class="tab">
         <div class="fakeNav">
+            <p>Computer Score</p>
             <div class="fakeBtn">
                 <button class="min">-</button><button class="max">o</button><button class="close">x</button>
             </div>
         </div>
         <div class="score">
-            <h2>Computer Score</h2>
             <h1 id="computerScore"></h1>
         </div>
     </div>
 
     <div id="playerScoreTab" class="tab">
         <div class="fakeNav">
+            <p>Player Score</p>
             <div class="fakeBtn">
                 <button class="min">-</button><button class="max">o</button><button class="close">x</button>
             </div>
         </div>
         <div class="score">
-            <h2>Player Score</h2>
             <h1 id="playerScore"></h1>
         </div>
     </div>
 
     <div id="mainWindow" class="tab">
         <div class="fakeNav">
+            <p>Rock, Paper, Scissors Game</p>
             <div class="fakeBtn">
                 <button class="min">-</button><button class="max">o</button><button class="close">x</button>
             </div>
@@ -45,19 +47,23 @@
                 <img id="computerImg" src="images/Computer_Hand/Computer_Idle.gif">
                 <img id="humanImg" src="images/Human_Hand/Human_Idle.gif">
             </div>
-            <div id ="playerChoice">
+            <div id="playerChoice">
                 <img src="images/rock.png" id="rock" class="humanInput">
                 <img src="images/paper.png" id="paper" class="humanInput">
                 <img src="images/scissors.png" id="scissors" class="humanInput">
             </div>
         </div>
-    </div>    
-</body>
+    </div>
+</main>
 
 <footer>
     <div class="footerTabs">
-        <p><img src="images/close.png"> Opponent Score</p> <p id="selected"><img src="images/digital-thermometer.png"> Rock, Paper, Scissors</p> <p><img src="images/trophy.png"> My Score</p> <p><img src="images/www.png"> The Odin Project</p>
+        <p><img src="images/Icons-1.png">Opponent Score</p>
+        <p id="selected"><img src="images/Icons-5.png">Rock, Paper, Scissors Game</p>
+        <p><img src="images/Icons-2.png">My Score</p>
+        <p><img src="images/Icons-3.png">The Odin Project</p>
     </div>
-    <p id="credit"><img src="images/cloudy.png"> made by <a href="https://github.com/cahdmus/">cahdmus</a></p>
+    <p id="credit"><img src="images/Icons-4.png"> made by <a href="https://github.com/cahdmus/">cahdmus</a></p>
 </footer>
+
 </html>
