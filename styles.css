@@ -123,14 +123,12 @@ main {
 #playerScoreTab {
     width: 190px;
     height: 130px;
-    /* modifier en dessous en fonction taille monitor */
     bottom: 10vh; right: 25vh;
 }
 
 #computerScoreTab {
     width: 200px;
     height: 120px;
-    /* modifier en dessous en fonction taille monitor */
     top: 10vh; left: 25vh;
 }
 
